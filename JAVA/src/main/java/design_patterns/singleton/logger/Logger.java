@@ -1,5 +1,8 @@
 package design_patterns.singleton.logger;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Logger {
 
     public static Logger l;
@@ -10,7 +13,10 @@ public class Logger {
     //method to get instance of Logger
     public static Logger getInstance(){
         if (l == null){
-            return new Logger();
+            Lock lock = new ReentrantLock();
+            lock.lock();
+            if (l == null) return new Logger();
+            lock.unlock();
         }
         return l;
     }
