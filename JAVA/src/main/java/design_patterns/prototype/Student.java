@@ -6,5 +6,20 @@ public class Student {
     private int age;
     private String gender;
 
+    public Student(String name, int age, String gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
 
+    public Student(Student other) {
+        this.name = other.name;
+        this.age = other.age;
+        this.gender = other.gender;
+    }
+
+
+    public Student copy() {
+        return new Student(this);
+    }
 }
