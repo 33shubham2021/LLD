@@ -15,7 +15,9 @@ public class Logger {
         if (l == null){
             Lock lock = new ReentrantLock();
             lock.lock();
-            if (l == null) return new Logger();
+            if (l == null){
+                l = new Logger();
+            }
             lock.unlock();
         }
         return l;
