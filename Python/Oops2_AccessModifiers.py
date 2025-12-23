@@ -8,6 +8,7 @@ private - can be achieved using double underscore ( __ )
          eg, for varible named batchId for class Student -> _Student__batchId
          this is called Name Mangling, discussed in details in Inheritance topic 
 
+In inheritance, private variables are inherited, but with different names(as per Name Mangling)
 """
 
 class Student:
