@@ -1,7 +1,8 @@
 package problems.tic_tac_toe.models;
 
-public enum GameStatus {
+public enum GameState {
     IN_PROGRESS,
-    ENDED,
-    DRAW
+    WIN,
+    DRAW,
+    PAUSE,
 }
