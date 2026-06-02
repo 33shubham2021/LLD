@@ -44,5 +44,12 @@ public class Main {
             System.out.println("Marks: " + student.marks + " Name: " + student.name);
         }
 
+        // Comparator on the basis of rollNumber
+        Comparator<Student> rollNumberComparator = (s1, s2) -> s1.rollNumber - s2.rollNumber;
+        Collections.sort(students, rollNumberComparator);
+        for (Student student : students) {
+            System.out.println("Roll Number: " + student.rollNumber + " Name: " + student.name);
+        }
+
     }
 }
