@@ -1,60 +1,42 @@
 package problems.library_management_system;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Booking {
-    public String getId() {
-        return id;
-    }
+    private final String id;
+    private final Book book;
+    private final User user;
+    private final LocalDate fromDate;
+    private final LocalDate toDate;       // due date
+    private LocalDate returnDate;          // null until the book is actually returned
+    private BookingStatus status;
 
-    public void setId(String id) {
+    public Booking(String id, Book book, User user, LocalDate fromDate, LocalDate toDate) {
         this.id = id;
-    }
-
-    public String getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(String bookId) {
-        this.bookId = bookId;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public Date getFromDate() {
-        return fromDate;
-    }
-
-    public void setFromDate(Date fromDate) {
+        this.book = book;
+        this.user = user;
         this.fromDate = fromDate;
-    }
-
-    public Date getToDate() {
-        return toDate;
-    }
-
-    public void setToDate(Date toDate) {
         this.toDate = toDate;
+        this.status = BookingStatus.ACTIVE;
     }
 
-    public Date getBookingTime() {
-        return bookingTime;
+    public void markReturned(LocalDate returnDate) {
+        this.returnDate = returnDate;
+        this.status = BookingStatus.RETURNED;
     }
 
-    public void setBookingTime(Date bookingTime) {
-        this.bookingTime = bookingTime;
-    }
+    public String getId() { return id; }
+    public Book getBook() { return book; }
+    public User getUser() { return user; }
+    public LocalDate getFromDate() { return fromDate; }
+    public LocalDate getToDate() { return toDate; }
+    public LocalDate getReturnDate() { return returnDate; }
+    public BookingStatus getStatus() { return status; }
 
-    private String id;
-    private String bookId;
-    private String userId;
-    private Date fromDate;
-    private Date toDate;
-    private Date bookingTime;
+    @Override
+    public String toString() {
+        return "Booking{id='" + id + "', book='" + book.getName() + "', user='" + user.getName()
+                + "', from=" + fromDate + ", to=" + toDate + ", status=" + status + "}";
+    }
 }
+
