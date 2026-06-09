@@ -1,20 +1,24 @@
 package random;
 import java.util.*;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+
 public class RandomTest {
     public static void main(String[] args) {
-        Deque<Integer> st = new  ArrayDeque<>();
-        st.push(1);
-        st.push(2);
-        st.push(3);
-        st.addLast(4);
-        printDeque(st);
+        List<String> sentences = List.of(
+                "Java is fun",
+                "Lambdas are powerful",
+                "Streams make life easy"
+        );
+
+        sentences.stream()
+                .flatMap(sentence -> Arrays.stream(sentence.split(" ")))
+                .forEach(System.out::println);
 
 
     }
 
-    public static void printDeque(Deque<Integer> arr){
-        for (Integer i : arr){
-            System.out.println(i);
-        }
-    }
 }
